@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+    tags: ["*"]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Install .NET Framework 4.5 developer pack
+        shell: pwsh
+        run: |
+          $url = "https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe"
+          $installer = "$env:TEMP\ndp452.exe"
+          Invoke-WebRequest -Uri $url -OutFile $installer
+          Start-Process -FilePath $installer -ArgumentList "/quiet","/norestart" -Wait
+
+      - name: Build Release
+        run: msbuild "QFIL Helper/QFILHelper.vbproj" /p:Configuration=Release /p:Platform="AnyCPU"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: QFILHelper
+          path: |
+            QFIL Helper/bin/Release
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: windows-latest
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: QFILHelper
+          path: build
+
+      - name: Create release archive
+        run: Compress-Archive -Path \"build/*\" -DestinationPath \"QFILHelper-${{ github.ref_name }}.zip\"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: QFILHelper ${{ github.ref_name }}
+          files: |
+            QFILHelper-${{ github.ref_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
