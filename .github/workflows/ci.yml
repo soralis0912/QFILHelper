@@ -20,7 +20,7 @@ jobs:
       - name: Install .NET Framework 4.5 developer pack
         shell: pwsh
         run: |
-          $url = "https://download.microsoft.com/download/1/6/3/1636b21d-9b7b-4ad5-b10f-48a28b57721b/NDP452-KB2901907-x86-x64-AllOS-ENU.exe"
+          $url = "https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe"
           $installer = "$env:TEMP\ndp452.exe"
           Invoke-WebRequest -Uri $url -OutFile $installer
           Start-Process -FilePath $installer -ArgumentList "/quiet","/norestart" -Wait
