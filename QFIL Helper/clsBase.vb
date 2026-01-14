@@ -134,10 +134,18 @@ Public Class clsBase
 
         For Each oEntity As Management.ManagementObject In oCollection
 
-            sPortName = oEntity.Properties.Item("Name").Value
+            If oEntity.Properties.Item("Name").Value Is Nothing Then Continue For
+
+            sPortName = oEntity.Properties.Item("Name").Value.ToString
 
             If sPortName = "" Then Continue For
-            If sPortName.IndexOf("Qualcomm HS-USB QDLoader 9008") > -1 Then Return True
+
+            Dim saVendors() As String = _
+                {"Qualcomm HS-USB QDLoader 9008", "Quectel QDLoader 9008"}
+
+            For Each sVendor As String In saVendors
+                If sPortName.IndexOf(sVendor, StringComparison.OrdinalIgnoreCase) > -1 Then Return True
+            Next
 
         Next
 
