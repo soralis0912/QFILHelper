@@ -17,6 +17,10 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
+      - name: Install .NET Framework 4.5 developer pack
+        run: choco install netfx-4.5.2-devpack --no-progress -y
+        shell: pwsh
+
       - name: Build Release
         run: msbuild "QFIL Helper/QFILHelper.vbproj" /p:Configuration=Release /p:Platform="AnyCPU"
 
