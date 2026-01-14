@@ -136,10 +136,16 @@
   <data name="menu_ru" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu_ru.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="menu_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="msg_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\msg_en.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="msg_ru" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\msg_ru.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="msg_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\msg_zh.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

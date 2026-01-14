@@ -214,6 +214,16 @@ Namespace My.Resources
                 Return ResourceManager.GetString("menu_ru", resourceCulture)
             End Get
         End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to 	@-检测连接的 COM 端口
+        '''  Chinese menu content.
+        '''</summary>
+        Friend ReadOnly Property menu_zh() As String
+            Get
+                Return ResourceManager.GetString("menu_zh", resourceCulture)
+            End Get
+        End Property
         
         '''<summary>
         '''  Looks up a localized string similar to Available
@@ -250,6 +260,15 @@ Namespace My.Resources
         Friend ReadOnly Property msg_ru() As String
             Get
                 Return ResourceManager.GetString("msg_ru", resourceCulture)
+            End Get
+        End Property
+
+        '''<summary>
+        '''  Looks up a localized string similar to Chinese messages.
+        '''</summary>
+        Friend ReadOnly Property msg_zh() As String
+            Get
+                Return ResourceManager.GetString("msg_zh", resourceCulture)
             End Get
         End Property
     End Module
