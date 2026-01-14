@@ -47,7 +47,10 @@ jobs:
           path: build
 
       - name: Create release archive
-        run: Compress-Archive -Path \"build/*\" -DestinationPath \"QFILHelper-${{ github.ref_name }}.zip\"
+        shell: pwsh
+        run: |
+          $dst = "QFILHelper-${{ github.ref_name }}.zip"
+          Compress-Archive -Path "build/*" -DestinationPath $dst
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
