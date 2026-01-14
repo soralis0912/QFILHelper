@@ -18,7 +18,7 @@ jobs:
         uses: microsoft/setup-msbuild@v2
 
       - name: Build Release
-        run: msbuild "QFIL Helper/QFILHelper.vbproj" /p:Configuration=Release /p:Platform=\"Any CPU\"
+        run: msbuild "QFIL Helper/QFILHelper.vbproj" /p:Configuration=Release /p:Platform="AnyCPU"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
